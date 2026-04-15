@@ -5,8 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -19,26 +21,17 @@ import java.util.Map;
  *
  *   - 404 (no handler / no static resource) -> rendered HTML page
  *     styled with Tailwind (loaded from /tailwinds.css runtime JIT).
+ *   - Bean-validation failures -> JSON with per-field errors.
  *   - All other errors -> consistent JSON envelope.
  */
 @Slf4j
-@RestControllerAdvice
+@ControllerAdvice
 public class GlobalControllerAdvice {
 
     // ---------------------------------------------------------------------
     // 404 -> HTML page
     // ---------------------------------------------------------------------
 
-    /**
-     * Handles both:
-     *   - NoHandlerFoundException  (no @RequestMapping matched the URL)
-     *   - NoResourceFoundException (Spring Boot 3.2+, no static resource matched)
-     *
-     * Returns a Tailwind-styled HTML page with status 404.
-     * Returning ResponseEntity<String> with contentType=text/html makes
-     * Spring use StringHttpMessageConverter instead of Jackson, so the
-     * HTML is written to the response body verbatim.
-     */
     @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
     public ResponseEntity<String> handleNotFound(Exception ex) {
         log.warn("404 not found: {}", ex.getMessage());
@@ -55,7 +48,6 @@ public class GlobalControllerAdvice {
                     <meta charset="UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <title>404 — Page Not Found</title>
-                    <!-- Tailwind runtime JIT (already bundled as /tailwinds.css in this app) -->
                     <script src="/tailwinds.css"></script>
                 </head>
                 <body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 flex items-center justify-center px-6 font-sans">
@@ -88,30 +80,50 @@ public class GlobalControllerAdvice {
     // JSON error handlers
     // ---------------------------------------------------------------------
 
+    /**
+     * Triggered when @Valid on a controller argument fails.
+     * Returns a 400 with a per-field map of error messages.
+     */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, Object>> handleValidation(MethodArgumentNotValidException ex) {
+        Map<String, String> fieldErrors = new LinkedHashMap<>();
+        for (FieldError fe : ex.getBindingResult().getFieldErrors()) {
+            fieldErrors.put(fe.getField(), fe.getDefaultMessage());
+        }
+        log.warn("Validation failed: {}", fieldErrors);
+
+        Map<String, Object> body = baseEnvelope(HttpStatus.BAD_REQUEST, "Validation failed");
+        body.put("fieldErrors", fieldErrors);
+        return ResponseEntity.badRequest().body(body);
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
         log.warn("Bad request: {}", ex.getMessage());
-        return jsonError(HttpStatus.BAD_REQUEST, ex.getMessage());
+        return ResponseEntity.badRequest().body(baseEnvelope(HttpStatus.BAD_REQUEST, ex.getMessage()));
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, Object>> handleUnreadable(HttpMessageNotReadableException ex) {
         log.warn("Malformed request body: {}", ex.getMostSpecificCause().getMessage());
-        return jsonError(HttpStatus.BAD_REQUEST, "Malformed JSON request body");
+        return ResponseEntity.badRequest()
+                .body(baseEnvelope(HttpStatus.BAD_REQUEST, "Malformed JSON request body"));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleAny(Exception ex) {
         log.error("Unhandled exception", ex);
-        return jsonError(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected server error");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(baseEnvelope(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected server error"));
     }
 
-    private ResponseEntity<Map<String, Object>> jsonError(HttpStatus status, String message) {
+    private Map<String, Object> baseEnvelope(HttpStatus status, String message) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", Instant.now().toString());
         body.put("status", status.value());
         body.put("error", status.getReasonPhrase());
         body.put("message", message);
-        return ResponseEntity.status(status).body(body);
+        return body;
     }
 }
+  
