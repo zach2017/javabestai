@@ -15,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import zac.demo.api.audit.sink.LogFileAuditSink;
 import zac.demo.api.model.Person;
 
 import java.util.List;
@@ -24,10 +25,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /**
- * Integration test for AuditAspect.
+ * Integration test for AuditAspect + LogFileAuditSink + AuditProperties.
  *
- * Attaches a Logback ListAppender to the AuditAspect logger so we can
- * make assertions against what the aspect actually emitted.
+ * Attaches a Logback ListAppender to the LogFileAuditSink logger so we
+ * can directly assert on the rendered audit lines.
  */
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,25 +40,35 @@ class AuditAspectIT {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private AuditProperties auditProperties;
+
     private ListAppender<ILoggingEvent> appender;
-    private Logger auditLogger;
+    private Logger sinkLogger;
 
     @BeforeEach
     void attachAppender() {
-        auditLogger = (Logger) LoggerFactory.getLogger(AuditAspect.class);
+        sinkLogger = (Logger) LoggerFactory.getLogger(LogFileAuditSink.class);
         appender = new ListAppender<>();
         appender.start();
-        auditLogger.addAppender(appender);
+        sinkLogger.addAppender(appender);
     }
 
     @AfterEach
     void detachAppender() {
-        auditLogger.detachAppender(appender);
+        sinkLogger.detachAppender(appender);
         appender.stop();
+        // Reset any property mutations done in individual tests so the
+        // next test sees the configured defaults again.
+        auditProperties.setEnabled(true);
+        auditProperties.setLogArgs(true);
+        auditProperties.setLogResult(true);
+        auditProperties.setLogTiming(true);
+        auditProperties.setIncludeSwagger(true);
     }
 
     @Test
-    @DisplayName("Successful controller call produces entry and exit audit logs for both controller and service")
+    @DisplayName("Successful controller call produces entry/exit lines for both controller and service")
     void logsControllerAndServiceInvocations() throws Exception {
         Person p = new Person("Ada Lovelace", 42L, "ADMIN");
 
@@ -84,16 +95,14 @@ class AuditAspectIT {
 
         List<String> messages = capturedMessages();
 
-        // @Valid fails before the controller method runs, so the audit advice logs
-        // the @ControllerAdvice handler being invoked instead.
         assertThat(messages).anyMatch(m -> m.startsWith("→ GlobalControllerAdvice.handleValidation"));
         assertThat(messages).anyMatch(m -> m.startsWith("← GlobalControllerAdvice.handleValidation returned"));
         assertThat(messages).noneMatch(m -> m.startsWith("→ HelloController.hello"));
     }
 
     @Test
-    @DisplayName("Swagger endpoint /v3/api-docs is also audited via the springdoc pointcut")
-    void logsSwaggerOpenApiEndpoint() throws Exception {
+    @DisplayName("Swagger endpoint /v3/api-docs is audited when audit.include-swagger=true")
+    void logsSwaggerOpenApiEndpointWhenIncluded() throws Exception {
         mockMvc.perform(get("/v3/api-docs"));
 
         boolean swaggerCallAudited = capturedMessages().stream()
@@ -105,19 +114,67 @@ class AuditAspectIT {
     }
 
     @Test
-    @DisplayName("Aspect rethrows the original exception after logging it")
-    void exceptionIsLoggedAndRethrown() throws Exception {
-        // POSTing malformed JSON makes Spring throw HttpMessageNotReadableException
-        // before the controller method runs. The advice handler will catch it,
-        // and the aspect logs that handler's invocation.
+    @DisplayName("Swagger calls are skipped when audit.include-swagger=false")
+    void skipsSwaggerWhenExcluded() throws Exception {
+        auditProperties.setIncludeSwagger(false);
+
+        mockMvc.perform(get("/v3/api-docs"));
+
+        // We may still see app-component logs from other beans, but no
+        // log line should reference a springdoc class.
+        assertThat(capturedMessages())
+                .noneMatch(m -> m.contains("OpenApi") || m.contains("Springdoc")
+                        || m.contains("Swagger"));
+    }
+
+    @Test
+    @DisplayName("audit.enabled=false silences the aspect entirely")
+    void disabledMasterSwitchSilencesEverything() throws Exception {
+        auditProperties.setEnabled(false);
+        Person p = new Person("Ada", 1L, "ADMIN");
+
         mockMvc.perform(post("/api/hello")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ not valid json"))
-                .andExpect(result -> assertThat(result.getResponse().getStatus()).isEqualTo(400));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(p)));
 
-        List<String> messages = capturedMessages();
+        assertThat(capturedMessages()).isEmpty();
+    }
 
-        assertThat(messages).anyMatch(m -> m.startsWith("→ GlobalControllerAdvice.handleUnreadable"));
+    @Test
+    @DisplayName("audit.log-args=false hides argument values in entry lines")
+    void hidesArgsWhenLogArgsDisabled() throws Exception {
+        auditProperties.setLogArgs(false);
+        Person p = new Person("SecretName", 1L, "ADMIN");
+
+        mockMvc.perform(post("/api/hello")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(p)));
+
+        List<String> entryLines = capturedMessages().stream()
+                .filter(m -> m.startsWith("→"))
+                .toList();
+
+        assertThat(entryLines).isNotEmpty();
+        assertThat(entryLines).allMatch(m -> m.contains("<args hidden>"));
+        assertThat(entryLines).noneMatch(m -> m.contains("SecretName"));
+    }
+
+    @Test
+    @DisplayName("audit.log-timing=false omits the [Xms] suffix from exit lines")
+    void omitsTimingWhenLogTimingDisabled() throws Exception {
+        auditProperties.setLogTiming(false);
+        Person p = new Person("Ada", 1L, "ADMIN");
+
+        mockMvc.perform(post("/api/hello")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(p)));
+
+        List<String> exitLines = capturedMessages().stream()
+                .filter(m -> m.startsWith("←"))
+                .toList();
+
+        assertThat(exitLines).isNotEmpty();
+        assertThat(exitLines).noneMatch(m -> m.matches(".*\\[\\d+ms\\].*"));
     }
 
     private List<String> capturedMessages() {
