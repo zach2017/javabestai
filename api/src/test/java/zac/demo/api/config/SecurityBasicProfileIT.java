@@ -14,9 +14,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import zac.demo.api.model.Person;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -44,23 +49,25 @@ class SecurityBasicProfileIT {
     private static final String VALID_PASSWORD = "changeme";
 
     @Test
-    @DisplayName("POST /api/hello returns 401 without credentials")
+    @DisplayName("POST /api/hello returns 401 without credentials (JSON client)")
     void apiCallWithoutCredentialsReturns401() throws Exception {
         Person p = new Person("Ada", 1L, "ADMIN");
 
         mockMvc.perform(post("/api/hello")
+                        .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(p)))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
-    @DisplayName("POST /api/hello returns 401 with invalid credentials")
+    @DisplayName("POST /api/hello returns 401 with invalid credentials (JSON client)")
     void apiCallWithInvalidCredentialsReturns401() throws Exception {
         Person p = new Person("Ada", 1L, "ADMIN");
 
         mockMvc.perform(post("/api/hello")
                         .with(httpBasic("admin", "wrongpassword"))
+                        .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(p)))
                 .andExpect(status().isUnauthorized());
@@ -73,6 +80,7 @@ class SecurityBasicProfileIT {
 
         mockMvc.perform(post("/api/hello")
                         .with(httpBasic(VALID_USER, VALID_PASSWORD))
+                        .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(p)))
                 .andExpect(status().isOk());
@@ -109,6 +117,47 @@ class SecurityBasicProfileIT {
     void onlySecurityBasicConfigIsLoaded() {
         assertThat(context.containsBean("securityBasicConfig")).isTrue();
         assertThat(context.containsBean("securityOffConfig")).isFalse();
+    }
+
+    @Test
+    @DisplayName("Browser request (Accept: text/html) without auth redirects to /login")
+    void browserRequestRedirectsToLogin() throws Exception {
+        mockMvc.perform(get("/api/hello").accept(MediaType.TEXT_HTML))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(result -> {
+                    String location = result.getResponse().getHeader("Location");
+                    assertThat(location).endsWith("/login");
+                });
+    }
+
+    @Test
+    @DisplayName("GET /login returns the auto-generated login form")
+    void loginPageIsAccessible() throws Exception {
+        mockMvc.perform(get("/login"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(content().string(containsString("Please sign in")));
+    }
+
+    @Test
+    @DisplayName("POST /login with valid credentials authenticates and redirects")
+    void formLoginWithValidCredentialsRedirects() throws Exception {
+        mockMvc.perform(formLogin("/login").user(VALID_USER).password(VALID_PASSWORD))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(authenticated().withUsername(VALID_USER));
+    }
+
+    @Test
+    @DisplayName("POST /login with invalid credentials redirects to /login?error")
+    void formLoginWithInvalidCredentialsRedirectsToError() throws Exception {
+        mockMvc.perform(formLogin("/login").user(VALID_USER).password("wrong"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(unauthenticated())
+                .andExpect(result -> {
+                    String location = result.getResponse().getHeader("Location");
+                    assertThat(location).contains("/login");
+                    assertThat(location).contains("error");
+                });
     }
 
     @Test

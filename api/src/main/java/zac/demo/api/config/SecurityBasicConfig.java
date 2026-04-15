@@ -50,23 +50,38 @@ public class SecurityBasicConfig {
     /**
      * The single SecurityFilterChain bean. Replaces Spring Boot's default
      * (which would also enforce auth, but with a generated password).
+     *
+     * Two auth mechanisms are wired in side by side:
+     *   - formLogin — browser users hitting a protected URL get redirected
+     *     to /login (Spring Security's default auto-generated form).
+     *   - httpBasic — API clients (curl, Postman, fetch with an
+     *     Authorization header) get a 401 + WWW-Authenticate: Basic.
+     *
+     * Spring picks based on the Accept header: text/html → form, anything
+     * else → Basic.
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                // CSRF protection is not useful for a stateless JSON API
-                // accessed with Basic auth. Disable it to keep curl/etc. simple.
+                // CSRF protection is disabled because curl/Postman calls with
+                // Basic auth shouldn't need a token. The form-login POST is
+                // still safe because Spring Security's default login form
+                // submits to the same origin.
                 .csrf(csrf -> csrf.disable())
-                // Basic auth doesn't need a session.
-                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // Form login needs a session to remember the authenticated user;
+                // IF_REQUIRED is the default and what we want.
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .authorizeHttpRequests(auth -> auth
-                        // Static / landing pages remain public.
+                        // Static / landing pages and the login form remain public.
                         .requestMatchers("/", "/index.html", "/tailwinds.css",
-                                "/error", "/favicon.ico").permitAll()
+                                "/error", "/favicon.ico",
+                                "/login", "/logout").permitAll()
                         // Everything else (notably /api/**) requires authentication.
                         .anyRequest().authenticated()
                 )
+                .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
+                .logout(Customizer.withDefaults())
                 .build();
     }
 

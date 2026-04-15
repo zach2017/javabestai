@@ -33,7 +33,8 @@ test suite.
 10. [Swagger / OpenAPI](#swagger--openapi)
 11. [Testing strategy](#testing-strategy)
 12. [Running the app](#running-the-app)
-13. [Extending: adding a database or Elasticsearch audit sink](#extending-adding-a-database-or-elasticsearch-audit-sink)
+13. [Security profiles](#security-profiles)
+14. [Extending: adding a database or Elasticsearch audit sink](#extending-adding-a-database-or-elasticsearch-audit-sink)
 
 ---
 
@@ -82,7 +83,10 @@ starter/
     │   │   │       ├── AuditSink.java
     │   │   │       └── LogFileAuditSink.java
     │   │   ├── config/
-    │   │   │   └── OpenApiConfig.java
+    │   │   │   ├── OpenApiConfig.java
+    │   │   │   ├── SecurityBasicConfig.java
+    │   │   │   ├── SecurityOffConfig.java
+    │   │   │   └── SecurityUserProperties.java
     │   │   ├── controller/
     │   │   │   └── HelloController.java
     │   │   ├── model/
@@ -91,6 +95,8 @@ starter/
     │   │       └── GreetingService.java
     │   └── resources/
     │       ├── application.properties
+    │       ├── application-security-basic.properties
+    │       ├── application-security-off.properties
     │       └── static/
     │           ├── index.html
     │           └── tailwinds.css
@@ -99,6 +105,9 @@ starter/
         │   ├── ApiApplicationTests.java
         │   ├── advice/GlobalControllerAdviceIT.java
         │   ├── audit/AuditAspectIT.java
+        │   ├── config/
+        │   │   ├── SecurityBasicProfileIT.java
+        │   │   └── SecurityOffProfileIT.java
         │   ├── controller/HelloControllerTest.java
         │   ├── model/PersonValidationTest.java
         │   └── service/GreetingServiceTest.java
@@ -128,9 +137,11 @@ artifact, so most of our `<dependency>` blocks have no explicit `<version>`.
 | `spring-boot-starter-web` | (managed) | Embedded Tomcat, Spring MVC, Jackson, validation auto-config triggers | [link](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web) |
 | `spring-boot-starter-aop` | (managed) | Spring AOP + AspectJ runtime — required for `@Aspect` and `@Around` | [link](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop) |
 | `spring-boot-starter-validation` | (managed) | Hibernate Validator (the reference Jakarta Bean Validation impl) | [link](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation) |
+| `spring-boot-starter-security` | (managed) | Spring Security: filter chain, password encoders, in-memory user store | [link](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security) |
 | `springdoc-openapi-starter-webmvc-ui` | 2.8.16 | Generates OpenAPI 3 docs from Spring MVC mappings + bundles Swagger UI | [link](https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui/2.8.16) |
 | `org.projectlombok:lombok` | (managed) | Annotation processor: `@Data`, `@Slf4j`, `@RequiredArgsConstructor`, etc. | [link](https://mvnrepository.com/artifact/org.projectlombok/lombok) |
 | `spring-boot-starter-test` (test scope) | (managed) | JUnit 5, AssertJ, Mockito, Hamcrest, Spring Test, MockMvc, JsonPath | [link](https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test) |
+| `spring-security-test` (test scope) | (managed) | `httpBasic(...)`, `user(...)` and other Spring Security test helpers | [link](https://mvnrepository.com/artifact/org.springframework.security/spring-security-test) |
 
 A few notes on the pom plumbing that aren't dependencies but matter:
 
@@ -921,6 +932,8 @@ The test suite is layered to match the complexity of what's being tested:
 | `HelloControllerTest`       | `@WebMvcTest`             | MVC slice + this controller + advice    | HTTP routing, validation, error JSON      |
 | `GlobalControllerAdviceIT`  | `@SpringBootTest`         | Full app context + MockMvc              | HTML 404 page (needs full static-resource setup) |
 | `AuditAspectIT`             | `@SpringBootTest`         | Full app context + MockMvc              | Aspect + sinks + properties               |
+| `SecurityOffProfileIT`      | `@SpringBootTest` + `@ActiveProfiles("security-off")` | Full context, security excluded | Endpoints public, no `SecurityFilterChain` bean |
+| `SecurityBasicProfileIT`    | `@SpringBootTest` + `@ActiveProfiles("security-basic")` | Full context with HTTP Basic | 401 vs 200 paths, swagger bypass, properties bound |
 
 Suffix convention: `Test` for fast unit / slice tests, `IT` for
 integration tests that load the full Spring context.
@@ -1144,6 +1157,196 @@ curl -sS -X POST http://localhost:8080/api/hello \
 
 The first returns 200 with the greeting; the second returns 400 with
 `fieldErrors` for all three fields.
+
+---
+
+## Security profiles
+
+Two Spring profiles control whether security is enforced. The active
+profile is selected by `spring.profiles.active` (default: `security-off`).
+
+| Profile | Auth | SecurityAutoConfiguration | Configuration class | Static user |
+|---|---|---|---|---|
+| `security-off` | none — all endpoints public | excluded via property | `SecurityOffConfig` | n/a |
+| `security-basic` | HTTP Basic on `/api/**` | active, overridden by our `SecurityFilterChain` | `SecurityBasicConfig` | `admin` / `changeme` |
+
+Switch profiles at runtime:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=security-basic
+# or
+java -jar target/api-0.0.1-SNAPSHOT.jar --spring.profiles.active=security-basic
+# or
+SPRING_PROFILES_ACTIVE=security-basic ./mvnw spring-boot:run
+```
+
+### How `security-off` works
+
+`application-security-off.properties` excludes Spring Boot's security
+auto-configuration entirely:
+
+```properties
+spring.autoconfigure.exclude=\
+  org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration,\
+  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration,\
+  org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration
+```
+
+The exclusion lives in the profile-specific properties file (not on
+`@SpringBootApplication(exclude = ...)`) precisely so it only takes
+effect when the profile is active.
+
+`SecurityOffConfig` itself is mostly informational — a `@PostConstruct`
+log line announces the profile so you can see at a glance from the boot
+log that the app is running unauthenticated. It's also a stable hook for
+adding profile-only beans later (e.g. a permissive CORS config that you'd
+only want when there's no security in the way).
+
+### How `security-basic` works
+
+`SecurityBasicConfig` provides four beans:
+
+**`SecurityFilterChain`** — the central authorization configuration.
+
+```java
+return http
+        .csrf(csrf -> csrf.disable())
+        .sessionManagement(sm -> sm.sessionCreationPolicy(STATELESS))
+        .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/index.html", "/tailwinds.css",
+                        "/error", "/favicon.ico").permitAll()
+                .anyRequest().authenticated()
+        )
+        .httpBasic(Customizer.withDefaults())
+        .build();
+```
+
+- CSRF is disabled — this is a stateless JSON API authenticated with
+  Basic auth, so CSRF tokens add no value and just complicate `curl`.
+- Session creation is `STATELESS` — Spring Security won't create an
+  `HttpSession` for authentication, matching how Basic auth is supposed
+  to work.
+- The static landing page and Tailwind asset are explicitly `permitAll`.
+- Everything else, including `/api/**`, requires authentication.
+- `httpBasic(Customizer.withDefaults())` enables HTTP Basic.
+
+**`UserDetailsService`** — backed by an `InMemoryUserDetailsManager`
+seeded from `SecurityUserProperties`:
+
+```java
+UserDetails user = User.withUsername(userProps.getName())
+        .password(encoder.encode(userProps.getPassword()))
+        .roles(userProps.getRoles().split("\\s*,\\s*"))
+        .build();
+return new InMemoryUserDetailsManager(user);
+```
+
+The credentials live in `application-security-basic.properties`:
+
+```properties
+app.security.user.name=admin
+app.security.user.password=changeme
+app.security.user.roles=USER
+```
+
+In real deployments you'd populate those from environment variables or a
+secrets manager — never check them into `application.properties`.
+
+**`PasswordEncoder`** — `BCryptPasswordEncoder`, the default-recommended
+encoder. The plain-text password from properties is encoded once at
+startup and the encoded form is what's stored.
+
+**`WebSecurityCustomizer`** — bypasses the security filter chain entirely
+for the swagger / OpenAPI endpoints:
+
+```java
+return web -> web.ignoring().requestMatchers(
+        "/v3/api-docs", "/v3/api-docs/**", "/v3/api-docs.yaml",
+        "/swagger-ui.html", "/swagger-ui/**", "/swagger-resources/**"
+);
+```
+
+The distinction vs. `.permitAll()` matters:
+
+- `.permitAll()` inside the filter chain — request still passes through
+  every security filter, but authorization always allows it. The
+  `SecurityContext` is populated, response headers (HSTS, frame
+  options) are added.
+- `WebSecurityCustomizer.ignoring(...)` — Spring Security's filter
+  chain is *not installed* on these paths. No auth, no headers, no
+  context. More efficient, but lose any security side effects.
+
+For static API docs, ignoring is appropriate — you definitely don't
+want to require auth to read API documentation, and you don't need
+security headers on the JSON document.
+
+### Trying both profiles
+
+With `security-off` (the default):
+
+```bash
+./mvnw spring-boot:run
+curl -X POST http://localhost:8080/api/hello \
+     -H 'Content-Type: application/json' \
+     -d '{"name":"Ada","id":1,"role":"ADMIN"}'
+# → 200 with greeting JSON
+```
+
+With `security-basic`:
+
+```bash
+./mvnw spring-boot:run -Dspring-boot.run.profiles=security-basic
+
+# No credentials → 401
+curl -i -X POST http://localhost:8080/api/hello \
+     -H 'Content-Type: application/json' \
+     -d '{"name":"Ada","id":1,"role":"ADMIN"}'
+
+# With credentials → 200
+curl -u admin:changeme -X POST http://localhost:8080/api/hello \
+     -H 'Content-Type: application/json' \
+     -d '{"name":"Ada","id":1,"role":"ADMIN"}'
+
+# Swagger still public → 200
+curl http://localhost:8080/v3/api-docs
+```
+
+### Profile tests
+
+`SecurityOffProfileIT` and `SecurityBasicProfileIT` are full-context
+`@SpringBootTest` tests with `@ActiveProfiles("...")`.
+
+`SecurityOffProfileIT` asserts:
+- `POST /api/hello` succeeds without credentials
+- Swagger and the 404 page are accessible without credentials
+- No `SecurityFilterChain` bean is registered
+- `SecurityOffConfig` is in the context, `SecurityBasicConfig` is not
+
+`SecurityBasicProfileIT` asserts:
+- `POST /api/hello` returns 401 with no credentials and 401 with bad ones
+- `POST /api/hello` returns 200 with valid credentials (`admin/changeme`)
+- `/v3/api-docs` is accessible without credentials (the
+  `WebSecurityCustomizer` bypass works)
+- `SecurityFilterChain` bean is registered
+- `SecurityBasicConfig` is in the context, `SecurityOffConfig` is not
+- `SecurityUserProperties` is populated from the profile properties
+
+`HelloControllerTest` (the `@WebMvcTest` slice) gets
+`@AutoConfigureMockMvc(addFilters = false)` so the now-on-classpath
+security filter doesn't reject every request in the slice — the slice
+isn't testing security, it's testing routing/validation/error mapping.
+
+### What about the existing tests?
+
+`@SpringBootTest`-based tests (`ApiApplicationTests`,
+`GlobalControllerAdviceIT`, `AuditAspectIT`) all use the default profile,
+which is `security-off`, so they continue to work unmodified — security
+auto-config is excluded and no filter chain is in the way.
+
+If you want one of them to run with security on, add
+`@ActiveProfiles("security-basic")` and add credentials to every MockMvc
+call (or use `.with(user("admin").roles("USER"))` from
+`spring-security-test`).
 
 ---
 
