@@ -1725,3 +1725,490 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 — Page Not Fou...(+1267 chars) [1ms]
+2026-04-15 10:40:14.075 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-15 10:40:14.088 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-15 10:40:16.771 [main] INFO  zac.demo.api.ApiApplication - Starting ApiApplication using Java 25.0.2 with PID 17094 (/Users/zach/java/api/target/classes started by zach in /Users/zach/java/api)
+2026-04-15 10:40:16.772 [main] INFO  zac.demo.api.ApiApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-15 10:40:17.083 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-15 10:40:17.091 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-15 10:40:17.091 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-15 10:40:17.104 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-15 10:40:17.104 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 318 ms
+2026-04-15 10:40:17.137 [main] INFO  zac.demo.api.config.OpenApiConfig - Initializing OpenAPI / Swagger configuration
+2026-04-15 10:40:17.171 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerWelcome(org.springdoc.core.properties.SwaggerUiConfigProperties@10b4e7f8, org.springdoc.core.properties.SpringDocConfigProperties@75023c53, org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider@66813e6e)
+2026-04-15 10:40:17.172 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerWelcome returned org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@7ab1127c [0ms]
+2026-04-15 10:40:17.179 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springdocObjectMapperProvider(org.springdoc.core.properties.SpringDocConfigProperties@75023c53)
+2026-04-15 10:40:17.179 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:40:17.179 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@1ddc6db2 [0ms]
+2026-04-15 10:40:17.183 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isUseArbitrarySchemas()
+2026-04-15 10:40:17.183 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isUseArbitrarySchemas returned false [0ms]
+2026-04-15 10:40:17.183 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isExplicitObjectSchema()
+2026-04-15 10:40:17.183 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isExplicitObjectSchema returned false [0ms]
+2026-04-15 10:40:17.183 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springdocObjectMapperProvider returned org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9 [4ms]
+2026-04-15 10:40:17.185 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.indexPageTransformer(org.springdoc.core.properties.SwaggerUiConfigProperties@10b4e7f8, org.springdoc.core.properties.SwaggerUiOAuthProperties@51bddd98, org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@7ab1127c, org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.186 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → ObjectMapperProvider.jsonMapper()
+2026-04-15 10:40:17.186 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← ObjectMapperProvider.jsonMapper returned com.fasterxml.jackson.databind.ObjectMapper@10e5bf9c [0ms]
+2026-04-15 10:40:17.186 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.indexPageTransformer returned org.springdoc.webmvc.ui.SwaggerIndexPageTransformer@68c9e023 [0ms]
+2026-04-15 10:40:17.192 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerResourceResolver(org.springdoc.core.properties.SwaggerUiConfigProperties@10b4e7f8)
+2026-04-15 10:40:17.193 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerResourceResolver returned org.springdoc.webmvc.ui.SwaggerResourceResolver@649f25f3 [0ms]
+2026-04-15 10:40:17.197 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerWebMvcConfigurer(org.springdoc.core.properties.SwaggerUiConfigProperties@10b4e7f8, org.springframework.boot.autoconfigure.web.WebProperties@11b32a14, org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties@1c33e528, org.springdoc.webmvc.ui.SwaggerIndexPageTransformer@68c9e023, org.springdoc.webmvc.ui.SwaggerResourceResolver@649f25f3, org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@7ab1127c)
+2026-04-15 10:40:17.197 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerWebMvcConfigurer returned org.springdoc.webmvc.ui.SwaggerWebMvcConfigurer@6707a4bf [0ms]
+2026-04-15 10:40:17.202 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addFormatters(ConversionService converters =
+	@org.springframework.format.annotation.DateTimeFormat java.lang.Long -> java.lang.String: org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory@7...(+20777 chars))
+2026-04-15 10:40:17.203 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addFormatters returned null [0ms]
+2026-04-15 10:40:17.205 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configurePathMatch(org.springframework.web.servlet.config.annotation.PathMatchConfigurer@29fe4840)
+2026-04-15 10:40:17.205 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configurePathMatch returned null [0ms]
+2026-04-15 10:40:17.207 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2026-04-15 10:40:17.208 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry@6397248c)
+2026-04-15 10:40:17.208 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addInterceptors returned null [0ms]
+2026-04-15 10:40:17.209 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry@6435fa1c)
+2026-04-15 10:40:17.209 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addCorsMappings returned null [0ms]
+2026-04-15 10:40:17.215 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.getValidator()
+2026-04-15 10:40:17.215 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.getValidator returned null [0ms]
+2026-04-15 10:40:17.216 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureContentNegotiation(org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer@3e39baf0)
+2026-04-15 10:40:17.216 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureContentNegotiation returned null [0ms]
+2026-04-15 10:40:17.236 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry@7e8279e5)
+2026-04-15 10:40:17.236 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addViewControllers returned null [0ms]
+2026-04-15 10:40:17.253 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureMessageConverters([org.springframework.http.converter.ByteArrayHttpMessageConverter@715f45c6, org.springframework.http.converter.StringHttpMessageConverter@47a7c93e, org.springframework.http.converter.StringHttpMessage...(+614 chars))
+2026-04-15 10:40:17.253 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureMessageConverters returned null [0ms]
+2026-04-15 10:40:17.253 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.extendMessageConverters([org.springframework.http.converter.ByteArrayHttpMessageConverter@715f45c6, org.springframework.http.converter.StringHttpMessageConverter@47a7c93e, org.springframework.http.converter.StringHttpMessage...(+614 chars))
+2026-04-15 10:40:17.253 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.extendMessageConverters returned null [0ms]
+2026-04-15 10:40:17.256 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry@5f726750)
+2026-04-15 10:40:17.256 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPath()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPath returned /swagger-ui.html [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getOauth2RedirectUrl()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getOauth2RedirectUrl returned /swagger-ui/oauth2-redirect.html [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getLayout()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getLayout returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getConfigUrl()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getConfigUrl returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getValidatorUrl()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getValidatorUrl returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getFilter()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getFilter returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getOperationsSorter()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getOperationsSorter returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getTagsSorter()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getTagsSorter returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDeepLinking()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDeepLinking returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDisplayOperationId()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDisplayOperationId returned null [0ms]
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelExpandDepth()
+2026-04-15 10:40:17.257 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelExpandDepth returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelsExpandDepth()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelsExpandDepth returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelRendering()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelRendering returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDisplayRequestDuration()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDisplayRequestDuration returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDocExpansion()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDocExpansion returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getMaxDisplayedTags()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getMaxDisplayedTags returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getShowCommonExtensions()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getShowCommonExtensions returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getShowExtensions()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getShowExtensions returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getSupportedSubmitMethods()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getSupportedSubmitMethods returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrl()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrl returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrls()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrls returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrlsPrimaryName()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrlsPrimaryName returned null [0ms]
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getGroupsOrder()
+2026-04-15 10:40:17.258 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getGroupsOrder returned ASC [0ms]
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getTryItOutEnabled()
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getTryItOutEnabled returned null [0ms]
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPersistAuthorization()
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPersistAuthorization returned null [0ms]
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getQueryConfigEnabled()
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getQueryConfigEnabled returned null [0ms]
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getWithCredentials()
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getWithCredentials returned null [0ms]
+2026-04-15 10:40:17.259 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWelcomeCommon.calculateUiRootPath(org.springdoc.core.properties.SwaggerUiConfigParameters@4e80a001, [Ljava.lang.StringBuilder;@624b523)
+2026-04-15 10:40:17.260 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWelcomeCommon.calculateUiRootPath returned null [1ms]
+2026-04-15 10:40:17.260 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.getVersion()
+2026-04-15 10:40:17.260 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.getVersion returned 5.32.0 [0ms]
+2026-04-15 10:40:17.261 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.getVersion()
+2026-04-15 10:40:17.261 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.getVersion returned 5.32.0 [0ms]
+2026-04-15 10:40:17.261 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addResourceHandlers returned null [4ms]
+2026-04-15 10:40:17.263 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer@48581a3b)
+2026-04-15 10:40:17.263 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureDefaultServletHandling returned null [0ms]
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.getMessageCodesResolver()
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.getMessageCodesResolver returned null [0ms]
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addArgumentResolvers([])
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addArgumentResolvers returned null [0ms]
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addReturnValueHandlers([])
+2026-04-15 10:40:17.265 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addReturnValueHandlers returned null [0ms]
+2026-04-15 10:40:17.266 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureAsyncSupport(org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer@7fb8bad0)
+2026-04-15 10:40:17.266 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureAsyncSupport returned null [0ms]
+2026-04-15 10:40:17.274 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureViewResolvers(org.springframework.web.servlet.config.annotation.ViewResolverRegistry@622d7e4)
+2026-04-15 10:40:17.274 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureViewResolvers returned null [0ms]
+2026-04-15 10:40:17.280 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureHandlerExceptionResolvers([])
+2026-04-15 10:40:17.280 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureHandlerExceptionResolvers returned null [0ms]
+2026-04-15 10:40:17.281 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.extendHandlerExceptionResolvers([org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver@7c11d32, org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver@2f9dda71, org.springfra...(+72 chars))
+2026-04-15 10:40:17.282 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.extendHandlerExceptionResolvers returned null [0ms]
+2026-04-15 10:40:17.283 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocSpringDataWebPropertiesProvider.springDataWebPropertiesProvider(Optional.empty)
+2026-04-15 10:40:17.283 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocSpringDataWebPropertiesProvider.springDataWebPropertiesProvider returned org.springdoc.core.providers.SpringDataWebPropertiesProvider@5bb911c1 [0ms]
+2026-04-15 10:40:17.285 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → WebConversionServiceConfiguration.webConversionServiceProvider()
+2026-04-15 10:40:17.285 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← WebConversionServiceConfiguration.webConversionServiceProvider returned org.springdoc.core.providers.WebConversionServiceProvider@25974207 [0ms]
+2026-04-15 10:40:17.286 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.initExtraSchemas()
+2026-04-15 10:40:17.287 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.initExtraSchemas returned null [1ms]
+2026-04-15 10:40:17.288 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.localSpringDocParameterNameDiscoverer()
+2026-04-15 10:40:17.288 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.localSpringDocParameterNameDiscoverer returned org.springdoc.core.discoverer.SpringDocParameterNameDiscoverer@4c319d52 [0ms]
+2026-04-15 10:40:17.289 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.additionalModelsConverter(org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.289 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.additionalModelsConverter returned org.springdoc.core.converters.AdditionalModelsConverter@7f2c57fe [0ms]
+2026-04-15 10:40:17.292 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.fileSupportConverter(org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.292 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.fileSupportConverter returned org.springdoc.core.converters.FileSupportConverter@268c030f [0ms]
+2026-04-15 10:40:17.294 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.responseSupportConverter(org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.294 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.responseSupportConverter returned org.springdoc.core.converters.ResponseSupportConverter@2d313c8c [0ms]
+2026-04-15 10:40:17.295 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.schemaPropertyDeprecatingConverter()
+2026-04-15 10:40:17.295 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.schemaPropertyDeprecatingConverter returned org.springdoc.core.converters.SchemaPropertyDeprecatingConverter@586495f1 [0ms]
+2026-04-15 10:40:17.296 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.polymorphicModelConverter(org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.296 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.polymorphicModelConverter returned org.springdoc.core.converters.PolymorphicModelConverter@b5ac0c1 [0ms]
+2026-04-15 10:40:17.298 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.propertyResolverUtils(org.springframework.beans.factory.support.DefaultListableBeanFactory@3568f9d2: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.conte...(+10870 chars), Empty MessageSource, org.springdoc.core.properties.SpringDocConfigProperties@75023c53)
+2026-04-15 10:40:17.298 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.propertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@7436364d [0ms]
+2026-04-15 10:40:17.299 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.securityParser(org.springdoc.core.utils.PropertyResolverUtils@7436364d)
+2026-04-15 10:40:17.299 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.securityParser returned org.springdoc.core.service.SecurityService@57bd6a8f [0ms]
+2026-04-15 10:40:17.301 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.openAPIBuilder(Optional[class OpenAPI {
+    openapi: 3.0.1
+    info: class Info {
+        title: Demo API
+        description: Simple hello-world API with a single Person endpoint.
+        summary: null
+        term...(+201 chars), org.springdoc.core.service.SecurityService@57bd6a8f, org.springdoc.core.properties.SpringDocConfigProperties@75023c53, org.springdoc.core.utils.PropertyResolverUtils@7436364d, Optional.empty, Optional.empty, Optional.empty)
+2026-04-15 10:40:17.302 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isUseFqn()
+2026-04-15 10:40:17.302 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isUseFqn returned false [0ms]
+2026-04-15 10:40:17.302 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.openAPIBuilder returned org.springdoc.core.service.OpenAPIService@7d2c345d [0ms]
+2026-04-15 10:40:17.304 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.modelConverterRegistrar(Optional[[org.springdoc.core.converters.AdditionalModelsConverter@7f2c57fe, org.springdoc.core.converters.FileSupportConverter@268c030f, org.springdoc.core.converters.ResponseSupportConverter@2d313c8c...(+142 chars), org.springdoc.core.properties.SpringDocConfigProperties@75023c53)
+2026-04-15 10:40:17.304 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isOpenapi31()
+2026-04-15 10:40:17.304 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isOpenapi31 returned true [0ms]
+2026-04-15 10:40:17.307 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.modelConverterRegistrar returned org.springdoc.core.converters.ModelConverterRegistrar@4b957db0 [3ms]
+2026-04-15 10:40:17.308 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.parameterBuilder(org.springdoc.core.utils.PropertyResolverUtils@7436364d, Optional[org.springdoc.core.providers.WebConversionServiceProvider@25974207], org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9, Optional.empty)
+2026-04-15 10:40:17.309 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getFactory()
+2026-04-15 10:40:17.309 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getFactory returned org.springframework.beans.factory.support.DefaultListableBeanFactory@3568f9d2: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.conte...(+10870 chars) [0ms]
+2026-04-15 10:40:17.309 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.parameterBuilder returned org.springdoc.core.service.GenericParameterService@7b14c61 [0ms]
+2026-04-15 10:40:17.310 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.requestBodyBuilder(org.springdoc.core.service.GenericParameterService@7b14c61, org.springdoc.core.utils.PropertyResolverUtils@7436364d)
+2026-04-15 10:40:17.310 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.requestBodyBuilder returned org.springdoc.core.service.RequestBodyService@5600a5da [0ms]
+2026-04-15 10:40:17.312 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.operationBuilder(org.springdoc.core.service.GenericParameterService@7b14c61, org.springdoc.core.service.RequestBodyService@5600a5da, org.springdoc.core.service.SecurityService@57bd6a8f, org.springdoc.core.utils.PropertyResolverUtils@7436364d)
+2026-04-15 10:40:17.312 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.operationBuilder returned org.springdoc.core.service.OperationService@5db3d57c [0ms]
+2026-04-15 10:40:17.315 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcRouterConfiguration.routerFunctionProvider()
+2026-04-15 10:40:17.315 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcRouterConfiguration.routerFunctionProvider returned org.springdoc.webmvc.core.providers.RouterFunctionWebMvcProvider@5e85c21b [0ms]
+2026-04-15 10:40:17.317 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.springWebProvider()
+2026-04-15 10:40:17.317 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.springWebProvider returned org.springdoc.webmvc.core.providers.SpringWebMvcProvider@251c8145 [0ms]
+2026-04-15 10:40:17.318 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocProviders(Optional.empty, Optional.empty, Optional.empty, Optional.empty, Optional[org.springdoc.webmvc.core.providers.RouterFunctionWebMvcProvider@5e85c21b], Optional[org.springdoc.webmvc.core.providers.SpringWebMvcProvider@251c8145], org.springdoc.core.providers.ObjectMapperProvider@3fcee3d9)
+2026-04-15 10:40:17.318 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → ObjectMapperProvider.jsonMapper()
+2026-04-15 10:40:17.318 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← ObjectMapperProvider.jsonMapper returned com.fasterxml.jackson.databind.ObjectMapper@10e5bf9c [0ms]
+2026-04-15 10:40:17.319 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocProviders returned org.springdoc.core.providers.SpringDocProviders@10f405ff [0ms]
+2026-04-15 10:40:17.320 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.globalOpenApiCustomizer()
+2026-04-15 10:40:17.320 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.globalOpenApiCustomizer returned org.springdoc.core.customizers.OperationIdCustomizer@689faf79 [0ms]
+2026-04-15 10:40:17.321 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.parameterObjectNamingStrategyCustomizer()
+2026-04-15 10:40:17.321 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.parameterObjectNamingStrategyCustomizer returned org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@797fcf9 [0ms]
+2026-04-15 10:40:17.323 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocCustomizers(Optional[[org.springdoc.core.customizers.OperationIdCustomizer@689faf79]], Optional.empty, Optional.empty, Optional.empty, Optional.empty, Optional[[org.springdoc.core.customizers.OperationIdCustomizer@689faf79]], Optional.empty, Optional.empty, Optional[[org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@797fcf9]], Optional.empty)
+2026-04-15 10:40:17.323 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocCustomizers returned org.springdoc.core.customizers.SpringDocCustomizers@58f254b1 [0ms]
+2026-04-15 10:40:17.324 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.schemaUtils(Optional.empty)
+2026-04-15 10:40:17.325 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.schemaUtils returned org.springdoc.core.utils.SchemaUtils@111c229c [0ms]
+2026-04-15 10:40:17.326 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.methodParameterPojoExtractor(org.springdoc.core.utils.SchemaUtils@111c229c)
+2026-04-15 10:40:17.326 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.methodParameterPojoExtractor returned org.springdoc.core.extractor.MethodParameterPojoExtractor@2c1d57bc [0ms]
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocAppInitializer(org.springdoc.core.properties.SpringDocConfigProperties@75023c53)
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@1ddc6db2 [0ms]
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@1ddc6db2 [0ms]
+2026-04-15 10:40:17.327 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocAppInitializer returned org.springdoc.core.events.SpringDocAppInitializer@355ce6a6 [0ms]
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.requestBuilder(org.springdoc.core.service.GenericParameterService@7b14c61, org.springdoc.core.service.RequestBodyService@5600a5da, org.springdoc.core.customizers.SpringDocCustomizers@58f254b1, org.springdoc.core.discoverer.SpringDocParameterNameDiscoverer@4c319d52, org.springdoc.core.extractor.MethodParameterPojoExtractor@2c1d57bc)
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocCustomizers.getOptionalDelegatingMethodParameterCustomizers()
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocCustomizers.getOptionalDelegatingMethodParameterCustomizers returned Optional[[org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@797fcf9]] [0ms]
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocCustomizers.getParameterCustomizers()
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocCustomizers.getParameterCustomizers returned Optional.empty [0ms]
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → GenericParameterService.getPropertyResolverUtils()
+2026-04-15 10:40:17.329 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GenericParameterService.getPropertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@7436364d [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getSpringDocConfigProperties()
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getSpringDocConfigProperties returned org.springdoc.core.properties.SpringDocConfigProperties@75023c53 [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isDefaultFlatParamObject()
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isDefaultFlatParamObject returned false [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → GenericParameterService.getPropertyResolverUtils()
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GenericParameterService.getPropertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@7436364d [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getSpringDocConfigProperties()
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getSpringDocConfigProperties returned org.springdoc.core.properties.SpringDocConfigProperties@75023c53 [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isDefaultSupportFormData()
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isDefaultSupportFormData returned false [0ms]
+2026-04-15 10:40:17.330 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.requestBuilder returned org.springdoc.webmvc.core.service.RequestService@4d354a3e [0ms]
+2026-04-15 10:40:17.333 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.responseBuilder(org.springdoc.core.service.OperationService@5db3d57c, org.springdoc.core.properties.SpringDocConfigProperties@75023c53, org.springdoc.core.utils.PropertyResolverUtils@7436364d)
+2026-04-15 10:40:17.333 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.responseBuilder returned org.springdoc.core.service.GenericResponseService@1511d157 [0ms]
+2026-04-15 10:40:17.337 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.openApiResource(org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider@9e02f84, org.springdoc.webmvc.core.service.RequestService@4d354a3e, org.springdoc.core.service.GenericResponseService@1511d157, org.springdoc.core.service.OperationService@5db3d57c, org.springdoc.core.properties.SpringDocConfigProperties@75023c53, org.springdoc.core.providers.SpringDocProviders@10f405ff, org.springdoc.core.customizers.SpringDocCustomizers@58f254b1)
+2026-04-15 10:40:17.338 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isPreLoadingEnabled()
+2026-04-15 10:40:17.338 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isPreLoadingEnabled returned false [0ms]
+2026-04-15 10:40:17.338 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.openApiResource returned org.springdoc.webmvc.api.OpenApiWebMvcResource@7e49ded [0ms]
+2026-04-15 10:40:17.343 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerConfigResource(org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@7ab1127c)
+2026-04-15 10:40:17.343 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerConfigResource returned org.springdoc.webmvc.ui.SwaggerConfigResource@634f58d2 [0ms]
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.springDocSwaggerInitializer(org.springdoc.core.properties.SwaggerUiConfigProperties@10b4e7f8)
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPath()
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPath returned /swagger-ui.html [0ms]
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.isEnabled()
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.isEnabled returned false [0ms]
+2026-04-15 10:40:17.344 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.springDocSwaggerInitializer returned org.springdoc.core.events.SpringDocAppInitializer@6aa7e176 [0ms]
+2026-04-15 10:40:17.366 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-15 10:40:17.370 [main] INFO  zac.demo.api.ApiApplication - Started ApiApplication in 0.711 seconds (process running for 0.8)
+2026-04-15 10:40:17.370 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocAppInitializer.init()
+2026-04-15 10:40:17.370 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-15 10:40:17.370 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocAppInitializer.init returned null [0ms]
+2026-04-15 10:40:17.370 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocAppInitializer.init()
+2026-04-15 10:40:17.370 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-15 10:40:17.370 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocAppInitializer.init returned null [0ms]
+2026-04-15 10:40:21.722 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-15 10:40:21.722 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-15 10:40:21.723 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-04-15 10:40:21.754 [http-nio-8080-exec-2] INFO  z.d.api.audit.sink.LogFileAuditSink - → GlobalControllerAdvice.handleNotFound(org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js-yaml.min.js.)
+2026-04-15 10:40:21.754 [http-nio-8080-exec-3] INFO  z.d.api.audit.sink.LogFileAuditSink - → GlobalControllerAdvice.handleNotFound(org.springframework.web.servlet.resource.NoResourceFoundException: No static resource jszip.min.js.)
+2026-04-15 10:40:21.754 [http-nio-8080-exec-2] WARN  z.d.a.advice.GlobalControllerAdvice - 404 not found: No static resource js-yaml.min.js.
+2026-04-15 10:40:21.754 [http-nio-8080-exec-3] WARN  z.d.a.advice.GlobalControllerAdvice - 404 not found: No static resource jszip.min.js.
+2026-04-15 10:40:21.756 [http-nio-8080-exec-2] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GlobalControllerAdvice.handleNotFound returned <404 NOT_FOUND Not Found,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Fou...(+1267 chars) [1ms]
+2026-04-15 10:40:21.756 [http-nio-8080-exec-3] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GlobalControllerAdvice.handleNotFound returned <404 NOT_FOUND Not Found,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Fou...(+1267 chars) [1ms]
+2026-04-15 10:41:20.166 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-15 10:41:20.178 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-04-15 10:41:23.055 [main] INFO  zac.demo.api.ApiApplication - Starting ApiApplication using Java 25.0.2 with PID 17232 (/Users/zach/java/api/target/classes started by zach in /Users/zach/java/api)
+2026-04-15 10:41:23.056 [main] INFO  zac.demo.api.ApiApplication - No active profile set, falling back to 1 default profile: "default"
+2026-04-15 10:41:23.389 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-04-15 10:41:23.393 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-04-15 10:41:23.393 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-04-15 10:41:23.409 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-04-15 10:41:23.409 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 337 ms
+2026-04-15 10:41:23.460 [main] INFO  zac.demo.api.config.OpenApiConfig - Initializing OpenAPI / Swagger configuration
+2026-04-15 10:41:23.496 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerWelcome(org.springdoc.core.properties.SwaggerUiConfigProperties@2703d91, org.springdoc.core.properties.SpringDocConfigProperties@5be052ca, org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider@2007435e)
+2026-04-15 10:41:23.497 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerWelcome returned org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@3a17b2e3 [0ms]
+2026-04-15 10:41:23.508 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springdocObjectMapperProvider(org.springdoc.core.properties.SpringDocConfigProperties@5be052ca)
+2026-04-15 10:41:23.509 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:41:23.509 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@22bdb1d0 [0ms]
+2026-04-15 10:41:23.513 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isUseArbitrarySchemas()
+2026-04-15 10:41:23.513 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isUseArbitrarySchemas returned false [0ms]
+2026-04-15 10:41:23.513 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isExplicitObjectSchema()
+2026-04-15 10:41:23.513 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isExplicitObjectSchema returned false [0ms]
+2026-04-15 10:41:23.513 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springdocObjectMapperProvider returned org.springdoc.core.providers.ObjectMapperProvider@5dc769f9 [4ms]
+2026-04-15 10:41:23.515 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.indexPageTransformer(org.springdoc.core.properties.SwaggerUiConfigProperties@2703d91, org.springdoc.core.properties.SwaggerUiOAuthProperties@1526f71, org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@3a17b2e3, org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.516 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → ObjectMapperProvider.jsonMapper()
+2026-04-15 10:41:23.516 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← ObjectMapperProvider.jsonMapper returned com.fasterxml.jackson.databind.ObjectMapper@5995851e [0ms]
+2026-04-15 10:41:23.516 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.indexPageTransformer returned org.springdoc.webmvc.ui.SwaggerIndexPageTransformer@48a2db72 [0ms]
+2026-04-15 10:41:23.518 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerResourceResolver(org.springdoc.core.properties.SwaggerUiConfigProperties@2703d91)
+2026-04-15 10:41:23.518 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerResourceResolver returned org.springdoc.webmvc.ui.SwaggerResourceResolver@ab24484 [0ms]
+2026-04-15 10:41:23.521 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerWebMvcConfigurer(org.springdoc.core.properties.SwaggerUiConfigProperties@2703d91, org.springframework.boot.autoconfigure.web.WebProperties@73613ae5, org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties@5a13fcf3, org.springdoc.webmvc.ui.SwaggerIndexPageTransformer@48a2db72, org.springdoc.webmvc.ui.SwaggerResourceResolver@ab24484, org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@3a17b2e3)
+2026-04-15 10:41:23.521 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerWebMvcConfigurer returned org.springdoc.webmvc.ui.SwaggerWebMvcConfigurer@11b32a14 [0ms]
+2026-04-15 10:41:23.526 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addFormatters(ConversionService converters =
+	@org.springframework.format.annotation.DateTimeFormat java.lang.Long -> java.lang.String: org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory@6...(+20780 chars))
+2026-04-15 10:41:23.526 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addFormatters returned null [0ms]
+2026-04-15 10:41:23.528 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configurePathMatch(org.springframework.web.servlet.config.annotation.PathMatchConfigurer@7ccfdaef)
+2026-04-15 10:41:23.528 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configurePathMatch returned null [0ms]
+2026-04-15 10:41:23.529 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2026-04-15 10:41:23.530 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry@51f95f0d)
+2026-04-15 10:41:23.530 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addInterceptors returned null [0ms]
+2026-04-15 10:41:23.530 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry@234c5e41)
+2026-04-15 10:41:23.530 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addCorsMappings returned null [0ms]
+2026-04-15 10:41:23.535 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.getValidator()
+2026-04-15 10:41:23.536 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.getValidator returned null [0ms]
+2026-04-15 10:41:23.537 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureContentNegotiation(org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer@8a6631b)
+2026-04-15 10:41:23.537 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureContentNegotiation returned null [0ms]
+2026-04-15 10:41:23.556 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addViewControllers(org.springframework.web.servlet.config.annotation.ViewControllerRegistry@2d5a1588)
+2026-04-15 10:41:23.556 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addViewControllers returned null [0ms]
+2026-04-15 10:41:23.575 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureMessageConverters([org.springframework.http.converter.ByteArrayHttpMessageConverter@5bde57ab, org.springframework.http.converter.StringHttpMessageConverter@7fdd43cd, org.springframework.http.converter.StringHttpMessage...(+611 chars))
+2026-04-15 10:41:23.575 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureMessageConverters returned null [0ms]
+2026-04-15 10:41:23.575 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.extendMessageConverters([org.springframework.http.converter.ByteArrayHttpMessageConverter@5bde57ab, org.springframework.http.converter.StringHttpMessageConverter@7fdd43cd, org.springframework.http.converter.StringHttpMessage...(+611 chars))
+2026-04-15 10:41:23.575 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.extendMessageConverters returned null [0ms]
+2026-04-15 10:41:23.578 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addResourceHandlers(org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry@29d405e6)
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPath()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPath returned /swagger-ui.html [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getOauth2RedirectUrl()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getOauth2RedirectUrl returned /swagger-ui/oauth2-redirect.html [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getLayout()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getLayout returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getConfigUrl()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getConfigUrl returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getValidatorUrl()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getValidatorUrl returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getFilter()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getFilter returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getOperationsSorter()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getOperationsSorter returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getTagsSorter()
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getTagsSorter returned null [0ms]
+2026-04-15 10:41:23.579 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDeepLinking()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDeepLinking returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDisplayOperationId()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDisplayOperationId returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelExpandDepth()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelExpandDepth returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelsExpandDepth()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelsExpandDepth returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDefaultModelRendering()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDefaultModelRendering returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDisplayRequestDuration()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDisplayRequestDuration returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getDocExpansion()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getDocExpansion returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getMaxDisplayedTags()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getMaxDisplayedTags returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getShowCommonExtensions()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getShowCommonExtensions returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getShowExtensions()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getShowExtensions returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getSupportedSubmitMethods()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getSupportedSubmitMethods returned null [0ms]
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrl()
+2026-04-15 10:41:23.580 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrl returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrls()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrls returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getUrlsPrimaryName()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getUrlsPrimaryName returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getGroupsOrder()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getGroupsOrder returned ASC [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getTryItOutEnabled()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getTryItOutEnabled returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPersistAuthorization()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPersistAuthorization returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getQueryConfigEnabled()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getQueryConfigEnabled returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getWithCredentials()
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getWithCredentials returned null [0ms]
+2026-04-15 10:41:23.581 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWelcomeCommon.calculateUiRootPath(org.springdoc.core.properties.SwaggerUiConfigParameters@4c731956, [Ljava.lang.StringBuilder;@56826a75)
+2026-04-15 10:41:23.582 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWelcomeCommon.calculateUiRootPath returned null [1ms]
+2026-04-15 10:41:23.583 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.getVersion()
+2026-04-15 10:41:23.583 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.getVersion returned 5.32.0 [0ms]
+2026-04-15 10:41:23.583 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.getVersion()
+2026-04-15 10:41:23.583 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.getVersion returned 5.32.0 [0ms]
+2026-04-15 10:41:23.583 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addResourceHandlers returned null [4ms]
+2026-04-15 10:41:23.586 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureDefaultServletHandling(org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer@52831a73)
+2026-04-15 10:41:23.586 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureDefaultServletHandling returned null [0ms]
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.getMessageCodesResolver()
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.getMessageCodesResolver returned null [0ms]
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addArgumentResolvers([])
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addArgumentResolvers returned null [0ms]
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.addReturnValueHandlers([])
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.addReturnValueHandlers returned null [0ms]
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureAsyncSupport(org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer@61e86192)
+2026-04-15 10:41:23.588 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureAsyncSupport returned null [0ms]
+2026-04-15 10:41:23.597 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureViewResolvers(org.springframework.web.servlet.config.annotation.ViewResolverRegistry@377949f1)
+2026-04-15 10:41:23.597 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureViewResolvers returned null [0ms]
+2026-04-15 10:41:23.604 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.configureHandlerExceptionResolvers([])
+2026-04-15 10:41:23.604 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.configureHandlerExceptionResolvers returned null [0ms]
+2026-04-15 10:41:23.608 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerWebMvcConfigurer.extendHandlerExceptionResolvers([org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver@3086f480, org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver@126f8f24, org.springfr...(+72 chars))
+2026-04-15 10:41:23.608 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerWebMvcConfigurer.extendHandlerExceptionResolvers returned null [0ms]
+2026-04-15 10:41:23.609 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocSpringDataWebPropertiesProvider.springDataWebPropertiesProvider(Optional.empty)
+2026-04-15 10:41:23.609 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocSpringDataWebPropertiesProvider.springDataWebPropertiesProvider returned org.springdoc.core.providers.SpringDataWebPropertiesProvider@7f5fcfe9 [0ms]
+2026-04-15 10:41:23.611 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → WebConversionServiceConfiguration.webConversionServiceProvider()
+2026-04-15 10:41:23.611 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← WebConversionServiceConfiguration.webConversionServiceProvider returned org.springdoc.core.providers.WebConversionServiceProvider@475f5672 [0ms]
+2026-04-15 10:41:23.613 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.initExtraSchemas()
+2026-04-15 10:41:23.614 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.initExtraSchemas returned null [1ms]
+2026-04-15 10:41:23.615 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.localSpringDocParameterNameDiscoverer()
+2026-04-15 10:41:23.615 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.localSpringDocParameterNameDiscoverer returned org.springdoc.core.discoverer.SpringDocParameterNameDiscoverer@5e5ddfbc [0ms]
+2026-04-15 10:41:23.616 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.additionalModelsConverter(org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.616 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.additionalModelsConverter returned org.springdoc.core.converters.AdditionalModelsConverter@4e4162bc [0ms]
+2026-04-15 10:41:23.617 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.fileSupportConverter(org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.617 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.fileSupportConverter returned org.springdoc.core.converters.FileSupportConverter@70b6db83 [0ms]
+2026-04-15 10:41:23.618 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.responseSupportConverter(org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.618 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.responseSupportConverter returned org.springdoc.core.converters.ResponseSupportConverter@a90e2c1 [0ms]
+2026-04-15 10:41:23.619 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.schemaPropertyDeprecatingConverter()
+2026-04-15 10:41:23.619 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.schemaPropertyDeprecatingConverter returned org.springdoc.core.converters.SchemaPropertyDeprecatingConverter@268c030f [0ms]
+2026-04-15 10:41:23.620 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.polymorphicModelConverter(org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.620 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.polymorphicModelConverter returned org.springdoc.core.converters.PolymorphicModelConverter@113f9078 [0ms]
+2026-04-15 10:41:23.622 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.propertyResolverUtils(org.springframework.beans.factory.support.DefaultListableBeanFactory@3568f9d2: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.conte...(+10870 chars), Empty MessageSource, org.springdoc.core.properties.SpringDocConfigProperties@5be052ca)
+2026-04-15 10:41:23.622 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.propertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b [0ms]
+2026-04-15 10:41:23.623 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.securityParser(org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b)
+2026-04-15 10:41:23.623 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.securityParser returned org.springdoc.core.service.SecurityService@45d56062 [0ms]
+2026-04-15 10:41:23.625 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.openAPIBuilder(Optional[class OpenAPI {
+    openapi: 3.0.1
+    info: class Info {
+        title: Demo API
+        description: Simple hello-world API with a single Person endpoint.
+        summary: null
+        term...(+201 chars), org.springdoc.core.service.SecurityService@45d56062, org.springdoc.core.properties.SpringDocConfigProperties@5be052ca, org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b, Optional.empty, Optional.empty, Optional.empty)
+2026-04-15 10:41:23.625 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isUseFqn()
+2026-04-15 10:41:23.625 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isUseFqn returned false [0ms]
+2026-04-15 10:41:23.625 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.openAPIBuilder returned org.springdoc.core.service.OpenAPIService@c412556 [0ms]
+2026-04-15 10:41:23.627 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.modelConverterRegistrar(Optional[[org.springdoc.core.converters.AdditionalModelsConverter@4e4162bc, org.springdoc.core.converters.FileSupportConverter@70b6db83, org.springdoc.core.converters.ResponseSupportConverter@a90e2c1,...(+142 chars), org.springdoc.core.properties.SpringDocConfigProperties@5be052ca)
+2026-04-15 10:41:23.627 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isOpenapi31()
+2026-04-15 10:41:23.628 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isOpenapi31 returned true [0ms]
+2026-04-15 10:41:23.630 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.modelConverterRegistrar returned org.springdoc.core.converters.ModelConverterRegistrar@280fafd [3ms]
+2026-04-15 10:41:23.632 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.parameterBuilder(org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b, Optional[org.springdoc.core.providers.WebConversionServiceProvider@475f5672], org.springdoc.core.providers.ObjectMapperProvider@5dc769f9, Optional.empty)
+2026-04-15 10:41:23.632 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getFactory()
+2026-04-15 10:41:23.632 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getFactory returned org.springframework.beans.factory.support.DefaultListableBeanFactory@3568f9d2: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.conte...(+10870 chars) [0ms]
+2026-04-15 10:41:23.632 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.parameterBuilder returned org.springdoc.core.service.GenericParameterService@3757e8e2 [0ms]
+2026-04-15 10:41:23.634 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.requestBodyBuilder(org.springdoc.core.service.GenericParameterService@3757e8e2, org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b)
+2026-04-15 10:41:23.634 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.requestBodyBuilder returned org.springdoc.core.service.RequestBodyService@6b162ecc [0ms]
+2026-04-15 10:41:23.636 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.operationBuilder(org.springdoc.core.service.GenericParameterService@3757e8e2, org.springdoc.core.service.RequestBodyService@6b162ecc, org.springdoc.core.service.SecurityService@45d56062, org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b)
+2026-04-15 10:41:23.636 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.operationBuilder returned org.springdoc.core.service.OperationService@2faa55bb [0ms]
+2026-04-15 10:41:23.638 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcRouterConfiguration.routerFunctionProvider()
+2026-04-15 10:41:23.639 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcRouterConfiguration.routerFunctionProvider returned org.springdoc.webmvc.core.providers.RouterFunctionWebMvcProvider@72ecbcb3 [0ms]
+2026-04-15 10:41:23.641 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.springWebProvider()
+2026-04-15 10:41:23.641 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.springWebProvider returned org.springdoc.webmvc.core.providers.SpringWebMvcProvider@6df4af5 [0ms]
+2026-04-15 10:41:23.642 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocProviders(Optional.empty, Optional.empty, Optional.empty, Optional.empty, Optional[org.springdoc.webmvc.core.providers.RouterFunctionWebMvcProvider@72ecbcb3], Optional[org.springdoc.webmvc.core.providers.SpringWebMvcProvider@6df4af5], org.springdoc.core.providers.ObjectMapperProvider@5dc769f9)
+2026-04-15 10:41:23.642 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → ObjectMapperProvider.jsonMapper()
+2026-04-15 10:41:23.642 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← ObjectMapperProvider.jsonMapper returned com.fasterxml.jackson.databind.ObjectMapper@5995851e [0ms]
+2026-04-15 10:41:23.643 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocProviders returned org.springdoc.core.providers.SpringDocProviders@69796bd0 [0ms]
+2026-04-15 10:41:23.644 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.globalOpenApiCustomizer()
+2026-04-15 10:41:23.644 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.globalOpenApiCustomizer returned org.springdoc.core.customizers.OperationIdCustomizer@bb3ecfe [0ms]
+2026-04-15 10:41:23.645 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.parameterObjectNamingStrategyCustomizer()
+2026-04-15 10:41:23.646 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.parameterObjectNamingStrategyCustomizer returned org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@411fa0ce [0ms]
+2026-04-15 10:41:23.647 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocCustomizers(Optional[[org.springdoc.core.customizers.OperationIdCustomizer@bb3ecfe]], Optional.empty, Optional.empty, Optional.empty, Optional.empty, Optional[[org.springdoc.core.customizers.OperationIdCustomizer@bb3ecfe]], Optional.empty, Optional.empty, Optional[[org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@411fa0ce]], Optional.empty)
+2026-04-15 10:41:23.647 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocCustomizers returned org.springdoc.core.customizers.SpringDocCustomizers@118041c7 [0ms]
+2026-04-15 10:41:23.649 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.schemaUtils(Optional.empty)
+2026-04-15 10:41:23.649 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.schemaUtils returned org.springdoc.core.utils.SchemaUtils@240f350a [0ms]
+2026-04-15 10:41:23.650 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.methodParameterPojoExtractor(org.springdoc.core.utils.SchemaUtils@240f350a)
+2026-04-15 10:41:23.651 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.methodParameterPojoExtractor returned org.springdoc.core.extractor.MethodParameterPojoExtractor@435e416c [0ms]
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfiguration.springDocAppInitializer(org.springdoc.core.properties.SpringDocConfigProperties@5be052ca)
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@22bdb1d0 [0ms]
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.getApiDocs()
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.getApiDocs returned org.springdoc.core.properties.SpringDocConfigProperties$ApiDocs@22bdb1d0 [0ms]
+2026-04-15 10:41:23.652 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfiguration.springDocAppInitializer returned org.springdoc.core.events.SpringDocAppInitializer@f5bf288 [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.requestBuilder(org.springdoc.core.service.GenericParameterService@3757e8e2, org.springdoc.core.service.RequestBodyService@6b162ecc, org.springdoc.core.customizers.SpringDocCustomizers@118041c7, org.springdoc.core.discoverer.SpringDocParameterNameDiscoverer@5e5ddfbc, org.springdoc.core.extractor.MethodParameterPojoExtractor@435e416c)
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocCustomizers.getOptionalDelegatingMethodParameterCustomizers()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocCustomizers.getOptionalDelegatingMethodParameterCustomizers returned Optional[[org.springdoc.core.customizers.ParameterObjectNamingStrategyCustomizer@411fa0ce]] [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocCustomizers.getParameterCustomizers()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocCustomizers.getParameterCustomizers returned Optional.empty [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → GenericParameterService.getPropertyResolverUtils()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GenericParameterService.getPropertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getSpringDocConfigProperties()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getSpringDocConfigProperties returned org.springdoc.core.properties.SpringDocConfigProperties@5be052ca [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isDefaultFlatParamObject()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isDefaultFlatParamObject returned false [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → GenericParameterService.getPropertyResolverUtils()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GenericParameterService.getPropertyResolverUtils returned org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b [0ms]
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → PropertyResolverUtils.getSpringDocConfigProperties()
+2026-04-15 10:41:23.654 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← PropertyResolverUtils.getSpringDocConfigProperties returned org.springdoc.core.properties.SpringDocConfigProperties@5be052ca [0ms]
+2026-04-15 10:41:23.655 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isDefaultSupportFormData()
+2026-04-15 10:41:23.655 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isDefaultSupportFormData returned false [0ms]
+2026-04-15 10:41:23.655 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.requestBuilder returned org.springdoc.webmvc.core.service.RequestService@5a48da4f [0ms]
+2026-04-15 10:41:23.659 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.responseBuilder(org.springdoc.core.service.OperationService@2faa55bb, org.springdoc.core.properties.SpringDocConfigProperties@5be052ca, org.springdoc.core.utils.PropertyResolverUtils@51ff3c4b)
+2026-04-15 10:41:23.659 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.responseBuilder returned org.springdoc.core.service.GenericResponseService@3313d477 [0ms]
+2026-04-15 10:41:23.663 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocWebMvcConfiguration.openApiResource(org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider@153d6d74, org.springdoc.webmvc.core.service.RequestService@5a48da4f, org.springdoc.core.service.GenericResponseService@3313d477, org.springdoc.core.service.OperationService@2faa55bb, org.springdoc.core.properties.SpringDocConfigProperties@5be052ca, org.springdoc.core.providers.SpringDocProviders@69796bd0, org.springdoc.core.customizers.SpringDocCustomizers@118041c7)
+2026-04-15 10:41:23.663 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocConfigProperties.isPreLoadingEnabled()
+2026-04-15 10:41:23.663 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocConfigProperties.isPreLoadingEnabled returned false [0ms]
+2026-04-15 10:41:23.663 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocWebMvcConfiguration.openApiResource returned org.springdoc.webmvc.api.OpenApiWebMvcResource@299b9851 [0ms]
+2026-04-15 10:41:23.668 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.swaggerConfigResource(org.springdoc.webmvc.ui.SwaggerWelcomeWebMvc@3a17b2e3)
+2026-04-15 10:41:23.668 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.swaggerConfigResource returned org.springdoc.webmvc.ui.SwaggerConfigResource@570a62a5 [0ms]
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerConfig.springDocSwaggerInitializer(org.springdoc.core.properties.SwaggerUiConfigProperties@2703d91)
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → AbstractSwaggerUiConfigProperties.getPath()
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← AbstractSwaggerUiConfigProperties.getPath returned /swagger-ui.html [0ms]
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SwaggerUiConfigProperties.isEnabled()
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerUiConfigProperties.isEnabled returned false [0ms]
+2026-04-15 10:41:23.669 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SwaggerConfig.springDocSwaggerInitializer returned org.springdoc.core.events.SpringDocAppInitializer@72465eb2 [0ms]
+2026-04-15 10:41:23.692 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-04-15 10:41:23.696 [main] INFO  zac.demo.api.ApiApplication - Started ApiApplication in 0.788 seconds (process running for 0.883)
+2026-04-15 10:41:23.696 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocAppInitializer.init()
+2026-04-15 10:41:23.696 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-04-15 10:41:23.697 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocAppInitializer.init returned null [0ms]
+2026-04-15 10:41:23.697 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocAppInitializer.init()
+2026-04-15 10:41:23.697 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-04-15 10:41:23.697 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocAppInitializer.init returned null [0ms]
