@@ -1,0 +1,46 @@
+services:
+  registry:
+    image: registry:2
+    container_name: kind-registry
+    restart: always
+    ports:
+      - "5001:5000"
+    networks:
+      - kind
+
+  rancher:
+    image: rancher/rancher:latest
+    container_name: rancher
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - "8773:443"
+      - "8000:80"
+    environment:
+      - CATTLE_BOOTSTRAP_PASSWORD=admin12345
+    volumes:
+      - rancher-data:/var/lib/rancher
+    networks:
+      - kind
+
+  postgres:
+    image: postgres:17
+    container_name: dev-postgres
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - kind
+
+volumes:
+  pgdata:
+  rancher-data:
+
+networks:
+  kind:
+    external: true

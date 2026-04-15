@@ -1,0 +1,15 @@
+  
+  brew install kind\n
+  brew install kubectl\n
+  
+  kind --version\nkubectl version --client\n
+  
+  
+  kind create cluster --config kindconfig.yaml
+  kubectl create namespace argocd\nkubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  kubectl delete namespace argocd\nkubectl create namespace argocd\nkubectl apply -n argocd --server-side \\n  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  
+  kubectl get pods -n argocd\nkubectl get crd | grep argoproj
+  kubectl get crd | grep argoproj
+  
+  docker compose up -d

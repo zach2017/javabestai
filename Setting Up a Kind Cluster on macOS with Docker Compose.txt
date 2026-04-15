@@ -1,0 +1,179 @@
+﻿Setting Up a Kind Cluster on macOS with Docker Compose
+Here's a complete walkthrough from a clean Mac to a running local Kubernetes cluster.
+Step 1: Install Docker Desktop for Mac
+Kind runs Kubernetes nodes as Docker containers, so Docker is required.
+Download Docker Desktop from https://www.docker.com/products/docker-desktop/ (pick the Apple Silicon or Intel build that matches your Mac). After installing, launch it and wait for the whale icon in the menu bar to stop animating.
+Verify it's running:
+docker --version
+docker compose version
+docker run hello-world
+
+
+In Docker Desktop's settings, give it enough resources for Kubernetes — at least 4 CPUs and 6–8 GB RAM under Settings → Resources.
+Step 2: Install Homebrew (if you don't have it)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+Step 3: Install kind and kubectl
+brew install kind
+brew install kubectl
+
+
+Verify:
+kind --version
+kubectl version --client
+
+
+Step 4: Create a Basic Kind Cluster
+The simplest one-liner:
+kind create cluster --name dev
+
+
+This spins up a single-node cluster. Confirm it works:
+kubectl cluster-info --context kind-dev
+kubectl get nodes
+
+
+Step 5: Create a Multi-Node Cluster with Port Mappings
+For anything realistic, use a config file. Save this as kind-config.yaml:
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: dev
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 8080
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 8443
+        protocol: TCP
+  - role: worker
+  - role: worker
+
+
+Create it:
+kind create cluster --config kind-config.yaml
+
+
+The extraPortMappings are important on macOS because Docker Desktop runs containers in a Linux VM — without these, you can't reach NodePort services from your Mac browser.
+Step 6: Useful Kind Commands
+kind get clusters              # list clusters
+kind delete cluster --name dev # tear it down
+kubectl config use-context kind-dev
+docker ps                      # see kind nodes as containers
+
+
+Step 7: Add Docker Compose for Supporting Services
+Kind handles your Kubernetes workloads, but you'll often want supporting services (a registry, a database, monitoring) running alongside via Docker Compose. Here's a docker-compose.yml with a local registry that kind can pull from:
+services:
+  registry:
+    image: registry:2
+    container_name: kind-registry
+    restart: always
+    ports:
+      - "5001:5000"
+    networks:
+      - kind
+
+
+  postgres:
+    image: postgres:16
+    container_name: dev-postgres
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - kind
+
+
+volumes:
+  pgdata:
+
+
+networks:
+  kind:
+    external: true
+
+
+Important: the kind Docker network is created automatically when you create a kind cluster, so start the cluster before running compose.
+docker compose up -d
+docker compose ps
+
+
+Step 8: Wire the Registry into Kind
+To let kind pull images from localhost:5001, run this once after the cluster is up:
+for node in $(kind get nodes --name dev); do
+  docker exec "$node" mkdir -p /etc/containerd/certs.d/localhost:5001
+  cat <<EOF | docker exec -i "$node" cp /dev/stdin /etc/containerd/certs.d/localhost:5001/hosts.toml
+[host."http://kind-registry:5000"]
+EOF
+done
+
+
+Now you can build, push, and deploy:
+docker build -t localhost:5001/myapp:dev .
+docker push localhost:5001/myapp:dev
+kubectl create deployment myapp --image=localhost:5001/myapp:dev
+
+
+Step 9: Quick Sanity Test
+Deploy nginx and check the port mapping works:
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80 --type=NodePort
+kubectl port-forward deployment/nginx 8080:80
+
+
+Then open http://localhost:8080 in your browser.
+Common Gotchas on macOS
+The Docker VM eats RAM quickly — if pods stay in Pending, bump Docker Desktop's memory allocation. On Apple Silicon, some images are amd64-only and will run under emulation; prefer multi-arch images or add --platform linux/arm64 when building. And if kubectl points at the wrong cluster after switching, run kubectl config use-context kind-dev to fix it.
+Want me to expand any step — say, adding an ingress controller (nginx or Traefik), wiring up a metrics stack, or building a sample app deployment end-to-end?
+
+
+Fixing the "metadata.annotations: Too long" Error
+This is a well-known Argo CD install error. The applicationsets CRD manifest is larger than the 256KB limit that kubectl apply enforces because apply stores the entire previous manifest in an annotation (kubectl.kubernetes.io/last-applied-configuration).
+The Fix: Use Server-Side Apply
+Replace your kubectl apply with kubectl apply --server-side:
+kubectl apply -n argocd \
+  --server-side \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+Server-side apply doesn't stuff the whole manifest into an annotation — the API server tracks field ownership directly, so the size limit doesn't bite.
+If You Already Tried the Failed Apply
+Clean up the partial install first, then retry with server-side:
+kubectl delete namespace argocd
+kubectl create namespace argocd
+kubectl apply -n argocd --server-side \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+If You Get a Field Conflict Error
+On a re-run you may see something like conflict with "kubectl-client-side-apply". That means a previous client-side apply already claimed ownership of some fields. Force the takeover:
+kubectl apply -n argocd --server-side --force-conflicts \
+  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+Alternative: Install via Helm
+If you'd rather avoid the raw manifest entirely, Helm sidesteps the annotation problem:
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update
+helm install argocd argo/argo-cd -n argocd --create-namespace
+
+
+Helm is also the more maintainable path long-term — easier upgrades, values overrides, and rollbacks.
+Why This Happens
+The CRD for ApplicationSet includes the full OpenAPI schema for every generator type (Git, List, Cluster, Matrix, SCM, PullRequest, etc.), which has grown large enough over recent Argo CD releases to consistently bust the 262144-byte annotation limit. Server-side apply is now the recommended install method in the official Argo CD docs for exactly this reason.
+Verify after install:
+kubectl get pods -n argocd
+kubectl get crd | grep argoproj
+
+
+Once everything's Running, continue with the port-forward and password steps from earlier. Let me know if you hit the field-conflict error or want to switch to the Helm install.
+kubectl get pods -n argocd 
+kubectl get crd | grep argoproj
