@@ -42,9 +42,13 @@ public final class TaskResult<T> {
     public boolean isRecovered() { return status == Status.RECOVERED; }
     public boolean isFailure()   { return status == Status.FAILURE; }
 
-    public Optional<T> valueOpt()         { return Optional.ofNullable(value); }
-    public Optional<TaskErrorCode> codeOpt() { return Optional.ofNullable(errorCode); }
-    public Optional<Throwable> errorOpt() { return Optional.ofNullable(error); }
+    // --- Lombok @Getter already generates getValue(), getErrorCode(), getError(), etc. ---
+    // These are the nullable-safe / Optional-wrapped convenience variants.
 
-    public T orElse(T other) { return value != null ? value : other; }
+    public T getValueOrNull() { return value; }
+    public T orElse(T other)  { return value != null ? value : other; }
+
+    public Optional<T>             valueOpt() { return Optional.ofNullable(value); }
+    public Optional<TaskErrorCode> errorCodeOpt() { return Optional.ofNullable(errorCode); }
+    public Optional<Throwable>     errorOpt() { return Optional.ofNullable(error); }
 }

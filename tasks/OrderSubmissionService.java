@@ -66,7 +66,7 @@ public class OrderSubmissionService {
                 log.info("Order {} submitted: {}", orderId, result.getValueOrNull());
                 return;
             }
-            TaskErrorCode code = result.getErrorCode().orElse(TaskErrorCode.EXECUTION_ERROR);
+            TaskErrorCode code = result.errorCodeOpt().orElse(TaskErrorCode.EXECUTION_ERROR);
             switch (code) {
                 case FORBIDDEN, UNAUTHENTICATED
                         -> log.warn("Access denied for order {}: {}", orderId, code);
