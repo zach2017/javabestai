@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: demo-api
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Issuer claim Spring will validate against the JWT's `iss`
+          issuer-uri: http://localhost:8080/realms/demo
+          # Explicit JWK Set URI (optional; resolved automatically from issuer)
+          jwk-set-uri: http://localhost:8080/realms/demo/protocol/openid-connect/certs
+
+logging:
+  level:
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: DEBUG

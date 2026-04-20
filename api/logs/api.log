@@ -3467,3 +3467,24 @@
 2026-04-15 12:56:05.222 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - → SpringDocAppInitializer.init()
 2026-04-15 12:56:05.222 [main] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
 2026-04-15 12:56:05.222 [main] INFO  z.d.api.audit.sink.LogFileAuditSink - ← SpringDocAppInitializer.init returned null [0ms]
+2026-04-15 12:56:50.509 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-15 12:56:50.509 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-04-15 12:56:50.510 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-04-15 12:57:33.002 [http-nio-8080-exec-5] INFO  z.d.api.audit.sink.LogFileAuditSink - → GlobalControllerAdvice.handleNotFound(org.springframework.web.servlet.resource.NoResourceFoundException: No static resource jszip.min.js.)
+2026-04-15 12:57:33.002 [http-nio-8080-exec-6] INFO  z.d.api.audit.sink.LogFileAuditSink - → GlobalControllerAdvice.handleNotFound(org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js-yaml.min.js.)
+2026-04-15 12:57:33.003 [http-nio-8080-exec-5] WARN  z.d.a.advice.GlobalControllerAdvice - 404 not found: No static resource jszip.min.js.
+2026-04-15 12:57:33.003 [http-nio-8080-exec-6] WARN  z.d.a.advice.GlobalControllerAdvice - 404 not found: No static resource js-yaml.min.js.
+2026-04-15 12:57:33.004 [http-nio-8080-exec-6] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GlobalControllerAdvice.handleNotFound returned <404 NOT_FOUND Not Found,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Fou...(+1267 chars) [0ms]
+2026-04-15 12:57:33.004 [http-nio-8080-exec-5] INFO  z.d.api.audit.sink.LogFileAuditSink - ← GlobalControllerAdvice.handleNotFound returned <404 NOT_FOUND Not Found,<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Fou...(+1267 chars) [0ms]
+2026-04-15 14:33:08.217 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-15 14:33:08.230 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
