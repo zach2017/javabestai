@@ -8,11 +8,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Example Spring service showing the full feature set:
- *   - authorization (ROLE_USER_READ required)
- *   - timeout + retry
- *   - fallback value
- *   - auditing happens automatically
+ * Example Spring service showing local Task usage (non-Temporal).
  */
 @Slf4j
 @Service
@@ -35,16 +31,5 @@ public class ExampleTaskService {
                     if (userId < 0) throw new IllegalArgumentException("bad id");
                     return "user-" + userId;
                 });
-    }
-
-    public CompletableFuture<TaskResult<Integer>> adminOnlyCompute() {
-        return taskFactory.<Integer>newTask()
-                .name("admin-compute")
-                .timeout(Duration.ofSeconds(2))
-                .requireAuthenticated(true)
-                .requiredAuthority("ROLE_ADMIN")
-                .requiredAuthority("SCOPE_compute:write")  // any-of
-                .build()
-                .execute(() -> 42);
     }
 }
